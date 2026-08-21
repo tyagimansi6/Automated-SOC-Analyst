@@ -469,3 +469,11 @@ class SimulationStartRequest(BaseModel):
 class SimulationStatusRead(BaseModel):
     state: str
     message: str = ""
+
+
+class DevWebSocketTestRead(BaseModel):
+    """Response for the development-only WebSocket broadcast probe."""
+
+    status: str = "ok"
+    message: str
+    connected_clients: int = Field(ge=0)

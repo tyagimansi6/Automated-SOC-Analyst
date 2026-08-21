@@ -3,6 +3,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.api.dev import router as dev_router
 from app.api.graph import router as graph_router
 from app.api.simulation import router as simulation_router
 from app.api.websockets import router as websocket_router
@@ -22,6 +23,7 @@ app.add_middleware(
 
 app.include_router(simulation_router, prefix=settings.api_v1_prefix)
 app.include_router(graph_router, prefix=settings.api_v1_prefix)
+app.include_router(dev_router, prefix=settings.api_v1_prefix)  # DEVELOPMENT / TEST ONLY
 app.include_router(websocket_router)
 
 
